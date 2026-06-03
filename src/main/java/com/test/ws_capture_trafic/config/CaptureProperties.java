@@ -4,6 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = "capture")
 public record CaptureProperties(
-        String queueUrl
+        String queueUrl,
+        boolean activate
 ) {
 }
