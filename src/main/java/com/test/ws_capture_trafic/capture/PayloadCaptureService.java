@@ -18,12 +18,17 @@ public class PayloadCaptureService {
 
         try {
 
+            long startTime = System.currentTimeMillis();
+
             String json =
                     objectMapper.writeValueAsString(capture);
 
             sqsProducer.send(json);
 
+            long duration = System.currentTimeMillis() - startTime;
+
             System.out.println("Payload envoyé à SQS");
+            System.out.println("Temps d'exécution de la capture: " + duration);
 
         } catch (Exception e) {
             throw new RuntimeException(e);
